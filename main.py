@@ -9,7 +9,7 @@ sensor.reset()
 sensor.set_pixformat(sensor.RGB565)  # 设置图像色彩格式为RGB565格式
 sensor.set_framesize(sensor.QQVGA)  # 设置图像大小为160*120
 sensor.set_auto_whitebal(True)  # 设置自动白平衡
-sensor.set_brightness(3000)  # 设置亮度为3000hjl;'k
+sensor.set_brightness(3000)  # 设置亮度为3000
 sensor.skip_frames(time=20)  # 跳过帧
 
 clock = time.clock()
