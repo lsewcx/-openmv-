@@ -17,7 +17,7 @@ num = 0
 uart = UART(3, 115200)
 
 
-def fill(string, width):
+def fill(string, width):  # 没到一定位数自动补零
     if len(string) == width:
         if string > str(sensor.width()):
             return str(sensor.width())
@@ -54,7 +54,7 @@ while True:
             for x, y in zip(x_values, y_values):
                 angle = math.atan2(y - center_y, x - center_x)  # 计算角度
                 angles.append(angle)
-            sorted_coordinates = [coord for _, coord in sorted(zip(angles, zip(x_values, y_values)))]
+            sorted_coordinates = [coord for _, coord in sorted(zip(angles, zip(x_values, y_values)))]  # 按照顺时针排序
             str_1 = fill(str(sorted_coordinates[0][0]), 3)
             str_2 = fill(str(sorted_coordinates[0][1]), 3)
             str_3 = fill(str(sorted_coordinates[1][0]), 3)
@@ -63,6 +63,7 @@ while True:
             str_6 = fill(str(sorted_coordinates[2][1]), 3)
             str_7 = fill(str(sorted_coordinates[3][0]), 3)
             str_8 = fill(str(sorted_coordinates[3][1]), 3)
+            # 所有四个角点的x和y通信
             uart.write(str_1)
             uart.write(str_2)
             uart.write(str_3)
